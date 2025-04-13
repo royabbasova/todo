@@ -1,0 +1,116 @@
+* {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    border: 1px solid #C4C4C4;
+    border-radius: 0.625em;
+}
+
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 1.25em;
+}
+
+.yellow-border {
+    background-color: #FFDC40;
+    width: 21em;
+    height: 1.75em;
+    border-top-right-radius: 0.625em;
+    border-top-left-radius: 0.625em;
+}
+
+h1 {
+    margin: 0 0 0.7em 0;
+    font-size: 26px;
+}
+
+.filter {
+    align-self: flex-end;
+    cursor: pointer;
+    color: #C4C4C4;
+
+    transition: all 0.3s ease;
+}
+
+.filter:hover {
+    color: #000000;
+}
+
+input {
+    outline: none;
+    border: none;
+    width: 100%;
+
+    padding: 0;
+}
+
+.list-inputs {
+    border: 1px solid #C4C4C4;
+    border-radius: 0.625em;
+    width: 100%;
+
+    padding: 0.625em 1.25em;
+    margin: 0.69em 0 1.125em 0;
+}
+
+.todo {
+    display: flex;
+}
+
+.cancel-btn {
+    align-self: flex-end;
+    margin-top: 3px;
+    margin-left: 5px;
+    padding: 0.8em;
+    color: #C4C4C4;
+    font-size: 0.5em;
+    border: 1px solid #C4C4C4;
+    border-radius: 50%;
+
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    color: #ffffff;
+    background-color: #833AE0;
+    border-color: #833AE0;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background-color: #833AE0;
+    border-radius: 4.46em;
+    padding: 0 0 0 1em;
+    border: none;
+    color: #ffffff;
+    width: 8em;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: start;
+}
+
+.add-new-input {
+    border-radius: 4.43em;
+    background-color: #9953F1;
+    padding: 10px 17px;
+    color: #ffffff;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    background-color: #833AE0;
+    border-radius: 4.46em;
+}
