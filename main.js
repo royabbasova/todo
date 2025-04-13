@@ -1,15 +1,15 @@
-const list = document.querySelector('.list-inputs');
-const addBtn = document.querySelector('.add-new-input');
-const submitBtn = document.querySelector('.submit-btn');
-const filter = document.querySelector('.filter');
+const list = document.querySelector(".list-inputs");
+const addBtn = document.querySelector(".add-new-input");
+const submitBtn = document.querySelector(".submit-btn");
+const filter = document.querySelector(".filter");
 
 let flag = false;
 
 let firstArr = [];
 
-addBtn.addEventListener('click', () => {
-    const newTodo = document.createElement('div');
-    newTodo.className = 'todo';
+addBtn.addEventListener("click", () => {
+    const newTodo = document.createElement("div");
+    newTodo.className = "todo";
     newTodo.innerHTML = `
         <input type="text" name="task" autocomplete="off">
         <i class="fa-solid fa-x cancel-btn"></i>
@@ -19,13 +19,13 @@ addBtn.addEventListener('click', () => {
 });
 
 
-submitBtn.addEventListener('click', () => {
-    const todos = document.querySelectorAll('.todo');
+submitBtn.addEventListener("click", () => {
+    const todos = document.querySelectorAll(".todo");
 
     firstArr = [...todos];
 
     todos.forEach((t, index) => {
-        const input = t.querySelector('input');
+        const input = t.querySelector("input");
 
         if (!input) return;
 
@@ -34,14 +34,14 @@ submitBtn.addEventListener('click', () => {
         if (value) {
             const taskNumber = index + 1;
 
-            t.innerHTML = '';
+            t.innerHTML = "";
 
-            const countText = document.createElement('span');
+            const countText = document.createElement("span");
             countText.textContent = `${taskNumber}. ${value}`;
-            countText.style.flex = '1';
+            countText.style.flex = "1";
 
-            const removeBtn = document.createElement('i');
-            removeBtn.className = 'fa-solid fa-x cancel-btn';
+            const removeBtn = document.createElement("i");
+            removeBtn.className = "fa-solid fa-x cancel-btn";
 
             t.append(countText);
             t.append(removeBtn);
@@ -50,16 +50,16 @@ submitBtn.addEventListener('click', () => {
 
 });
 
-list.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+list.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
         e.preventDefault();
         submitBtn.click();
     }
 });
 
-list.addEventListener('click', (e) => {
-    if (e.target.classList.contains('cancel-btn')) {
-        const todo = e.target.closest('.todo');
+list.addEventListener("click", (e) => {
+    if (e.target.classList.contains("cancel-btn")) {
+        const todo = e.target.closest(".todo");
         if (todo) {
             todo.remove();
 
@@ -68,11 +68,11 @@ list.addEventListener('click', (e) => {
     }
 });
 
-filter.addEventListener('click', () => {
-    const todos = [...document.querySelectorAll('.list-inputs .todo')]
+filter.addEventListener("click", () => {
+    const todos = [...document.querySelectorAll(".list-inputs .todo")]
     todos.filter(todo => {
-        const span = todo.querySelector('span');
-        return span && span.textContent.trim() !== '';
+        const span = todo.querySelector("span");
+        return span && span.textContent.trim() !== "";
     });
 
     if (todos.length === 0) {
@@ -81,46 +81,45 @@ filter.addEventListener('click', () => {
 
     if (flag === false) {
         todos.sort((f, s) => {
-            const first = f.querySelector('span')?.textContent.split('. ')[1] || '';
-            const second = s.querySelector('span')?.textContent.split('. ')[1] || '';
+            const first = f.querySelector("span")?.textContent.split(". ")[1] || "";
+            const second = s.querySelector("span")?.textContent.split(". ")[1] || "";
             return first.localeCompare(second);
         });
 
-        filter.className = 'fa-solid fa-arrow-up-short-wide filter';
-        filter.style.color = 'black';
+        filter.className = "fa-solid fa-arrow-up-short-wide filter";
+        filter.style.color = "black";
         flag = true;
     } else if (flag === true) {
         todos.sort((f, s) => {
-            const first = f.querySelector('span')?.textContent.split('. ')[1] || '';
-            const second = s.querySelector('span')?.textContent.split('. ')[1] || '';
+            const first = f.querySelector("span")?.textContent.split(". ")[1] || "";
+            const second = s.querySelector("span")?.textContent.split(". ")[1] || "";
             return second.localeCompare(first);
         });
 
-        filter.className = 'fa-solid fa-arrow-down-short-wide filter';
-        filter.style.color = 'black';
+        filter.className = "fa-solid fa-arrow-down-short-wide filter";
+        filter.style.color = "black";
         flag = null;
     } else if (flag === null) {
         todos.sort((a, b) => {
             return firstArr.indexOf(a) - firstArr.indexOf(b);
         });
 
-        filter.style.color = 'gray';
+        filter.style.color = "gray";
         flag = false;
     }
 
-    list.innerHTML = '';
+    list.innerHTML = "";
     todos.forEach(todo => list.append(todo));
 
     newNum();
 });
 
 function newNum() {
-    const todos = document.querySelectorAll('.list-inputs .todo span');
+    const todos = document.querySelectorAll(".list-inputs .todo span");
     todos.forEach((s, index) => {
-        const parts = s.textContent.split('. ');
-        const content = parts.slice(1).join('. ');
+        const parts = s.textContent.split(". ");
+        const content = parts.slice(1).join(". ");
         s.textContent = `${index + 1}. ${content}`;
     });
 };
-
 
